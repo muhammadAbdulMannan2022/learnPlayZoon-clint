@@ -1,0 +1,32 @@
+[
+  {
+    "toyname": "Abacus",
+    "toy_imageUrl": "https://i.ibb.co/NTpd1Cg/Untitled.jpg",
+    "seller_name": "Abdullah",
+    "seller_email": "user1@gmail.com",
+    "sub_category": "Math Learning Toys",
+    "price": 19.99,
+    "quantity": 10,
+    "description": "A classic educational toy for learning counting and arithmetic."
+  },
+  {
+    "toyname": "Building Blocks Set",
+    "toy_imageUrl": "https://i.ibb.co/rfsSF8k/nick-nice-Yp-Nf6-ATni-QA-unsplash.jpg",
+    "seller_name": "Abdullah",
+    "seller_email": "user1@gmail.com",
+    "sub_category": "Civil Engineering Toys",
+    "price": 29.99,
+    "quantity": 5,
+    "description": "A set of colorful building blocks for encouraging creativity and spatial skills."
+  },
+  {
+    "toyname": "Alphabet Flashcards",
+    "toy_imageUrl": "https://i.ibb.co/LpVch7n/susan-holt-simpson-H7-SCRw-U1ai-M-unsplash.jpg",
+    "seller_name": "Abdullah",
+    "seller_email": "user1@gmail.com",
+    "sub_category": "Language Toys",
+    "price": 9.99,
+    "quantity": 20,
+    "description": "Flashcards featuring the alphabet to aid in language learning."
+  }
+]
