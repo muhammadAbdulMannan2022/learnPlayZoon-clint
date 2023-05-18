@@ -1,5 +1,13 @@
+import Header from "../../shared/Header/Header";
+import Gallery from "../Gallery/Gallery";
+
 const Home = () => {
-  return <div>home</div>;
+  return (
+    <div>
+      <Header />
+      <Gallery />
+    </div>
+  );
 };
 
 export default Home;
