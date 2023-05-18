@@ -24,7 +24,9 @@ const Navbar = () => {
               Log Out
             </button>
           ) : (
-            <button className="btn">Login</button>
+            <button className="btn">
+              <Link to="/login">Login</Link>
+            </button>
           )}
 
           <button className="">
