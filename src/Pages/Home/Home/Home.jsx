@@ -1,5 +1,6 @@
 import Header from "../../shared/Header/Header";
 import Carouserl from "../Carouserl/Carouserl";
+import Contact from "../Contact/Contact";
 import Gallery from "../Gallery/Gallery";
 import Products from "../Products/Products";
 
@@ -10,6 +11,7 @@ const Home = () => {
       <Gallery />
       <Products />
       <Carouserl />
+      <Contact />
     </div>
   );
 };

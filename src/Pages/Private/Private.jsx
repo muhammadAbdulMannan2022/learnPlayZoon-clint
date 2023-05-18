@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
 
-const Privalte = ({ children }) => {
+const Private = ({ children }) => {
   const location = useLocation();
   const { user, loading } = useContext(AuthContext);
   if (!loading) {
@@ -29,4 +29,4 @@ const Privalte = ({ children }) => {
   }
 };
 
-export default Privalte;
+export default Private;

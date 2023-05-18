@@ -31,7 +31,7 @@ const Gallery = () => {
                 setModalImage(e?.target?.src);
                 setIsOpen(true);
               }}
-              className="h-80 max-w-full rounded-lg cursor-pointer"
+              className="h-80 w-96 rounded-lg cursor-pointer"
             />
           </div>
         ))}

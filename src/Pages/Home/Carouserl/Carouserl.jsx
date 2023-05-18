@@ -25,7 +25,7 @@ const Carouserl = () => {
     },
   ];
   return (
-    <div className="py-10 bg-green-400">
+    <div className="py-10 mt-5 bg-green-400">
       <h1 className="text-3xl text-center font-bold mb-10">
         What our Happy Clients Say
       </h1>

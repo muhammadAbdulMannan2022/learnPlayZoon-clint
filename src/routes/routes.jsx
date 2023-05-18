@@ -3,7 +3,8 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home/Home";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
-import Privalte from "../Pages/Private/Privalte";
+import Private from "../Pages/Private/Private";
+import AddToy from "../Pages/AddToy/AddToy";
 
 const router = createBrowserRouter([
   {
@@ -12,11 +13,18 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/addToy",
         element: (
-          <Privalte>
-            <Home />
-          </Privalte>
+          <Private>
+            <AddToy />
+          </Private>
         ),
+      },
+      {
+        path: "/myToy",
       },
       {
         path: "/register",
