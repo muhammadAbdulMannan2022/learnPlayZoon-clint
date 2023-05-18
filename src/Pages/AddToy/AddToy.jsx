@@ -39,9 +39,6 @@ const AddToy = () => {
         },
         body: JSON.stringify(toy),
       })
-        .then((res) => {
-          res.json();
-        })
         .then((resault) => {
           toast.success("Toy successfully added");
           console.log(resault);
