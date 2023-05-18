@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
   return (
     <>
       <div className="navbar w-full bg-base-100 px-5 flex-col lg:flex-row space-y-2">
@@ -17,7 +19,14 @@ const Navbar = () => {
         </div>
         <div className="navbar-end space-x-2 flex justify-center w-full lg:w-1/2 lg:justify-end">
           <button className="btn">Register</button>
-          <button className="btn">Login</button>
+          {user ? (
+            <button onClick={logOut} className="btn">
+              Log Out
+            </button>
+          ) : (
+            <button className="btn">Login</button>
+          )}
+
           <button className="">
             <FaUserCircle className="w-10 h-10" />
           </button>
