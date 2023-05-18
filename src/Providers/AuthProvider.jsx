@@ -14,7 +14,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(null);
+  const [loading, setLoading] = useState(true);
   //   google login
   const googleProvider = new GoogleAuthProvider();
   const signUpWithGoogle = () => {
@@ -42,6 +42,7 @@ const AuthProvider = ({ children }) => {
   // on user state chinged
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setLoading(true);
       setUser(currentUser);
       console.log("current user", currentUser);
       setLoading(false);

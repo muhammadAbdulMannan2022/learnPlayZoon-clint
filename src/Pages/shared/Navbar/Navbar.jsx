@@ -18,25 +18,45 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbar-end space-x-2 flex justify-center w-full lg:w-1/2 lg:justify-end">
-          <button className="btn">Register</button>
           {user ? (
-            <button onClick={logOut} className="btn">
-              Log Out
-            </button>
+            <>
+              <button onClick={logOut} className="btn">
+                Log Out
+              </button>
+              <button className="">
+                {user ? (
+                  <>
+                    {user?.photoURL ? (
+                      <img
+                        className="w-10 h-10 rounded-full border overflow-hidden"
+                        src={user?.photoURL}
+                        alt={user?.displayName}
+                        title={user?.displayName}
+                      />
+                    ) : (
+                      <FaUserCircle className="w-10 h-10" />
+                    )}
+                  </>
+                ) : (
+                  ""
+                )}
+              </button>
+            </>
           ) : (
-            <button className="btn">
-              <Link to="/login">Login</Link>
-            </button>
+            <>
+              <button className="btn">
+                <Link to="/register">Register</Link>
+              </button>
+              <button className="btn">
+                <Link to="/login">Login</Link>
+              </button>
+            </>
           )}
-
-          <button className="">
-            <FaUserCircle className="w-10 h-10" />
-          </button>
         </div>
       </div>
       <hr className="horizontal" />
       <div className="navbar px-5 bg-base-100 w-full lg:flex lg:justify-between">
-        <div className={`navbar-start lg:w-0`}>
+        <div className={`navbar-start lg:w-0 lg:hidden`}>
           <li
             onClick={() => {
               setIsOpen(!isOpen);
@@ -47,9 +67,9 @@ const Navbar = () => {
           </li>
         </div>
         <div
-          className={`navbar-center shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
+          className={`navbar-center bg-white shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
             isOpen ? "translate-x-0 ms-0" : "-translate-x-full -ms-5"
-          } lg:translate-x-0 menu menu-vertical absolute top-40 lg:relative lg:top-auto lg:menu-horizontal px-1`}
+          } lg:translate-x-0 menu menu-vertical absolute top-44 lg:relative lg:top-auto lg:menu-horizontal px-1`}
         >
           <li>
             <Link to="/">Home</Link>
@@ -60,12 +80,18 @@ const Navbar = () => {
           <li>
             <Link to="/">Blogs</Link>
           </li>
-          <li>
-            <Link to="/">Add a toy</Link>
-          </li>
-          <li>
-            <Link to="/">My toy</Link>
-          </li>
+          {user ? (
+            <>
+              <li>
+                <Link to="/">Add a toy</Link>
+              </li>
+              <li>
+                <Link to="/">My toy</Link>
+              </li>
+            </>
+          ) : (
+            ""
+          )}
         </div>
         <div className="navbar-end">
           <div className="form-control">
