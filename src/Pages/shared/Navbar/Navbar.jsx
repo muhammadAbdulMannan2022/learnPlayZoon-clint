@@ -1,65 +1,85 @@
 import { useState } from "react";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { FaBars, FaSearch, FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   return (
-    <div className="navbar bg-base-100 w-full">
-      <div className="navbar-start">
-        <li onClick={() => setIsOpen(!isOpen)} className={`btn me-4 lg:hidden`}>
-          <FaBars className="h-5 w-5" />
-        </li>
-        <Link
-          to="/"
-          className="normal-case text-2xl font-mono font-extrabold italic"
+    <>
+      <div className="navbar w-full bg-base-100 px-5 flex-col lg:flex-row space-y-2">
+        <div className="navbar-start flex w-full justify-center lg:w-1/2 lg:justify-normal">
+          <Link
+            to="/"
+            className="normal-case text-3xl font-mono font-extrabold italic"
+          >
+            LearnPlayZone
+          </Link>
+        </div>
+        <div className="navbar-end space-x-2 flex justify-center w-full lg:w-1/2 lg:justify-end">
+          <button className="btn">Register</button>
+          <button className="btn">Login</button>
+          <button className="">
+            <FaUserCircle className="w-10 h-10" />
+          </button>
+        </div>
+      </div>
+      <hr className="horizontal" />
+      <div className="navbar px-5 bg-base-100 w-full lg:flex lg:justify-between">
+        <div className={`navbar-start lg:w-0`}>
+          <li
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className={`btn me-4 lg:hidden`}
+          >
+            <FaBars className="h-5 w-5" />
+          </li>
+        </div>
+        <div
+          className={`navbar-center shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
+            isOpen ? "translate-x-0 ms-0" : "-translate-x-full -ms-5"
+          } lg:translate-x-0 menu menu-vertical absolute top-40 lg:relative lg:top-auto lg:menu-horizontal px-1`}
         >
-          LearnPlayZone
-        </Link>
-      </div>
-      <div
-        className={`navbar-center shadow m-0 p-3 lg:p-0 lg:shadow-none space-x-2 transition-all ${
-          isOpen ? "translate-x-0 ms-0" : "-translate-x-full -ms-5"
-        } lg:translate-x-0 menu menu-vertical absolute top-20 lg:relative lg:top-auto lg:menu-horizontal px-1`}
-      >
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/">All Toys</Link>
-        </li>
-        <li>
-          <Link to="/">Blogs</Link>
-        </li>
-        <li>
-          <Link to="/">Add a toy</Link>
-        </li>
-        <li>
-          <Link to="/">My toy</Link>
-        </li>
-      </div>
-      <div className="navbar-end">
-        <div className="form-control">
-          <div className="input-group">
-            <input
-              type="text"
-              placeholder="Search…"
-              className={`input input-bordered transition-all ${
-                searchIsOpen ? "w-auto" : "w-0 p-0 m-0"
-              } lg:w-auto p-4`}
-            />
-            <button
-              onClick={() => {
-                setSearchIsOpen(!searchIsOpen);
-              }}
-              className={`btn rounded-full lg:btn-square`}
-            >
-              <FaSearch className="h-5 w-5" />
-            </button>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/">All Toys</Link>
+          </li>
+          <li>
+            <Link to="/">Blogs</Link>
+          </li>
+          <li>
+            <Link to="/">Add a toy</Link>
+          </li>
+          <li>
+            <Link to="/">My toy</Link>
+          </li>
+        </div>
+        <div className="navbar-end">
+          <div className="form-control">
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder="Search…"
+                className={`input input-bordered transition-all ${
+                  searchIsOpen ? "w-auto" : "w-0 p-0 m-0"
+                } lg:w-auto p-4`}
+              />
+              <button
+                onClick={() => {
+                  setSearchIsOpen(!searchIsOpen);
+                }}
+                className={`btn rounded-full lg:btn-square`}
+              >
+                <FaSearch className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <hr className="horizontal" />
+    </>
   );
 };
 
