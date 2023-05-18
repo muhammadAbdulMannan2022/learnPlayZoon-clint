@@ -86,7 +86,7 @@ const Navbar = () => {
                 <Link to="/addToy">Add a toy</Link>
               </li>
               <li>
-                <Link to="/">My toy</Link>
+                <Link to="/mytoys">My toy</Link>
               </li>
             </>
           ) : (

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../Providers/AuthProvider";
+import swal from "sweetalert";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   const [imageUrl, setImageUrl] = useState("");
