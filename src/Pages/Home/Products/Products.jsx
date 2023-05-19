@@ -92,6 +92,7 @@ const Products = () => {
 };
 
 const Card = ({ _id, image, name, price, rating, description }) => {
+  const descriptionSliced = description.slice(0, 200);
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -99,7 +100,7 @@ const Card = ({ _id, image, name, price, rating, description }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        <p>{description}</p>
+        <p title={description}>{descriptionSliced}....</p>
         <h1>Price : ${price}</h1>
         <div className="flex items-center justify-between">
           <button className="btn btn-primary">

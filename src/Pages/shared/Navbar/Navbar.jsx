@@ -4,8 +4,22 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [focus, setFocus] = useState(false);
+  const [searchResault, setSearchResault] = useState([]);
   const [searchIsOpen, setSearchIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const handleSearch = (e) => {
+    const text = e.target.value;
+    console.log(text);
+    if (text === "") {
+      setSearchResault([]);
+    } else {
+      fetch(`http://localhost:5000/search/${text}`)
+        .then((res) => res.json())
+        .then((data) => setSearchResault(data))
+        .catch((err) => console.log(err));
+    }
+  };
   return (
     <>
       <div className="navbar w-full bg-base-100 px-5 flex-col lg:flex-row space-y-2">
@@ -67,9 +81,10 @@ const Navbar = () => {
           </li>
         </div>
         <div
+          onClick={() => setIsOpen(!isOpen)}
           className={`navbar-center bg-white shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
             isOpen ? "translate-x-0 ms-0" : "-translate-x-full -ms-5"
-          } lg:translate-x-0 menu menu-vertical absolute top-44 lg:relative lg:top-auto lg:menu-horizontal px-1`}
+          } lg:translate-x-0 menu menu-vertical z-20 absolute top-44 lg:relative lg:top-auto lg:menu-horizontal px-1`}
         >
           <li>
             <Link to="/">Home</Link>
@@ -94,23 +109,66 @@ const Navbar = () => {
           )}
         </div>
         <div className="navbar-end">
-          <div className="form-control">
-            <div className="input-group">
+          <div className="form-control relative">
+            <div className="input">
               <input
+                onFocus={() => {
+                  setFocus(true);
+                }}
+                onBlur={() => {
+                  setFocus(false);
+                }}
+                onChange={(e) => {
+                  handleSearch(e);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    handleSearch();
+                  }
+                }}
                 type="text"
                 placeholder="Search…"
-                className={`input input-bordered transition-all ${
-                  searchIsOpen ? "w-auto" : "w-0 p-0 m-0"
-                } lg:w-auto p-4`}
+                className={`input input-bordered transition-all lg:w-auto p-4`}
               />
-              <button
-                onClick={() => {
-                  setSearchIsOpen(!searchIsOpen);
-                }}
-                className={`btn rounded-full lg:btn-square`}
-              >
-                <FaSearch className="h-5 w-5" />
-              </button>
+              {/* {console.log(searchResault)} */}
+            </div>
+            <div
+              className={`bg-white z-20 border rounded shadow-md py-2 px-1 w-full h-auto absolute top-14 left-0 ${
+                focus ? "block" : "hidden"
+              }`}
+            >
+              {searchResault.length !== 0 && !searchResault[0]?.data ? (
+                searchResault.map((searchResaul) => {
+                  const { _id, toy_imageUrl, toyname, price } = searchResaul;
+                  return (
+                    <Link
+                      to={`/toys/details/${_id}`}
+                      className="flex border hover:bg-slate-100 py-2 gap-2 items-center shadow mb-1 cursor-pointer rounded"
+                      key={_id}
+                    >
+                      <img
+                        className="w-12 h-12"
+                        src={toy_imageUrl}
+                        alt={toyname}
+                      />
+                      <div>
+                        <h1 className="text-xl text-gray-900 font-bold">
+                          {toyname}
+                        </h1>
+                        <p className="text-gray-700 font-bold">
+                          price : ${price}
+                        </p>
+                      </div>
+                    </Link>
+                  );
+                })
+              ) : (
+                <div>
+                  <h1 className="text-2xl text-gray-900 text-center font-bold">
+                    No toy found <br /> type a valid name
+                  </h1>
+                </div>
+              )}
             </div>
           </div>
         </div>
