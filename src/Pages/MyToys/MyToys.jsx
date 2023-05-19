@@ -40,6 +40,7 @@ const MyToys = () => {
         updated.description = data.description;
         setToys([...restof, updated]);
         closeRef.current.click();
+        swal("Update!", "the toy has been updated!", "success");
       })
       .catch((err) => console.log(err));
   };
@@ -80,7 +81,7 @@ const MyToys = () => {
             </tr>
           </thead>
           {/* {console.log(toys)} */}
-          {/* {console.log(toys)} */}
+          {console.log(toys)}
           <tbody>
             {/* row 1 */}
             {toys.map((toy) => {

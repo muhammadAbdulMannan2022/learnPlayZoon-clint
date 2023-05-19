@@ -49,7 +49,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/mytoys",
-        element: <MyToys />,
+        element: (
+          <Private>
+            <MyToys />
+          </Private>
+        ),
       },
       {
         path: "/register",

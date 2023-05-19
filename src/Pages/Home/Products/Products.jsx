@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 const Products = () => {
@@ -43,6 +44,7 @@ const Products = () => {
                 {toys.map((toy) => (
                   <Card
                     key={toy?._id}
+                    _id={toy?._id}
                     image={toy?.toy_imageUrl}
                     price={toy?.price}
                     name={toy?.toyname}
@@ -57,6 +59,7 @@ const Products = () => {
                 {toys.map((toy) => (
                   <Card
                     key={toy?._id}
+                    _id={toy?._id}
                     image={toy?.toy_imageUrl}
                     price={toy?.price}
                     name={toy?.toyname}
@@ -71,6 +74,7 @@ const Products = () => {
                 {toys.map((toy) => (
                   <Card
                     key={toy?._id}
+                    _id={toy?._id}
                     image={toy?.toy_imageUrl}
                     price={toy?.price}
                     name={toy?.toyname}
@@ -87,8 +91,7 @@ const Products = () => {
   );
 };
 
-const Card = ({ image, name, price, rating, description }) => {
-  const notify = () => toast("here is tost");
+const Card = ({ _id, image, name, price, rating, description }) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -99,8 +102,8 @@ const Card = ({ image, name, price, rating, description }) => {
         <p>{description}</p>
         <h1>Price : ${price}</h1>
         <div className="flex items-center justify-between">
-          <button onClick={notify} className="btn btn-primary">
-            view details
+          <button className="btn btn-primary">
+            <Link to={`/toys/details/${_id}`}>view details</Link>
           </button>
           <div className="btn text-xl">
             <FaStar /> {rating}
