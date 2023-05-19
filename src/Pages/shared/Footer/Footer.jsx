@@ -5,6 +5,17 @@ const Footer = () => {
     <>
       <footer className="footer p-10 bg-blue-200 text-base-content">
         <div>
+          <span className="text-black text-3xl font-bold italic">
+            LearnPlayZone
+          </span>
+          <a className="link link-hover">Fast Delivery</a>
+          <a className="link link-hover">
+            Level-4, 34, Orland Park , Chicago, USA
+          </a>
+          <a className="link link-hover">example@gmail.com</a>
+          <a className="link link-hover">Phone : +100000000</a>
+        </div>
+        <div>
           <span className="footer-title">Services</span>
           <a className="link link-hover">Fast Delivery</a>
           <a className="link link-hover">Save Money</a>

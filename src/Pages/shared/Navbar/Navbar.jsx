@@ -10,7 +10,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const handleSearch = (e) => {
     const text = e.target.value;
-    console.log(text);
+    // console.log(text);
     if (text === "") {
       setSearchResault([]);
     } else {
@@ -116,7 +116,9 @@ const Navbar = () => {
                   setFocus(true);
                 }}
                 onBlur={() => {
-                  setFocus(false);
+                  setTimeout(() => {
+                    setFocus(false);
+                  }, 500);
                 }}
                 onChange={(e) => {
                   handleSearch(e);

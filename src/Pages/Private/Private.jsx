@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
+import swal from "sweetalert";
 
 const Private = ({ children }) => {
   const location = useLocation();
@@ -9,7 +10,11 @@ const Private = ({ children }) => {
     return user ? (
       <>{children}</>
     ) : (
-      <Navigate to="/login" state={location} replace={true} />
+      <>
+        <Navigate to="/login" state={location} replace={true}>
+          {swal("You have to log in first")}
+        </Navigate>
+      </>
     );
   } else {
     return (

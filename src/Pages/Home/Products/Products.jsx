@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import swal from "sweetalert";
 const Products = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   useEffect(() => {
     let category;
@@ -44,6 +47,7 @@ const Products = () => {
                 {toys.map((toy) => (
                   <Card
                     key={toy?._id}
+                    user={user}
                     _id={toy?._id}
                     image={toy?.toy_imageUrl}
                     price={toy?.price}
@@ -59,6 +63,7 @@ const Products = () => {
                 {toys.map((toy) => (
                   <Card
                     key={toy?._id}
+                    user={user}
                     _id={toy?._id}
                     image={toy?.toy_imageUrl}
                     price={toy?.price}
@@ -74,6 +79,7 @@ const Products = () => {
                 {toys.map((toy) => (
                   <Card
                     key={toy?._id}
+                    user={user}
                     _id={toy?._id}
                     image={toy?.toy_imageUrl}
                     price={toy?.price}
@@ -91,7 +97,7 @@ const Products = () => {
   );
 };
 
-const Card = ({ _id, image, name, price, rating, description }) => {
+const Card = ({ _id, image, name, price, rating, description, user }) => {
   const descriptionSliced = description.slice(0, 200);
   return (
     <div className="card w-96 bg-base-100 shadow-xl">

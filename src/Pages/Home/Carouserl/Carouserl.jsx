@@ -49,7 +49,7 @@ const Carouserl = () => {
               />
             </div>
             <h3 className="text-lg font-semibold mb-2">{review.author}</h3>
-            <p>{review.comment}</p>
+            <p className="px-0 xl:px-32 lg:px-20">{review.comment}</p>
           </div>
         ))}
       </Carousel>
