@@ -82,7 +82,7 @@ const Navbar = () => {
         </div>
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className={`navbar-center ml-1 bg-white shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
+          className={`navbar-center ml-1 lg:ml-3 bg-white shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
             isOpen
               ? "translate-x-0 ms-0 md:ml-3"
               : "-translate-x-full -ml-10 md:-ml-10"
