@@ -8,6 +8,7 @@ import AddToy from "../Pages/AddToy/AddToy";
 import AllToys from "../Pages/AllToys/AllToys";
 import Details from "../Pages/shared/Details/Details";
 import MyToys from "../Pages/MyToys/MyToys";
+import ErrorNotFound from "../Pages/Errors/ErrorNotFound";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         element: <Login />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <ErrorNotFound />,
   },
 ]);
 export default router;

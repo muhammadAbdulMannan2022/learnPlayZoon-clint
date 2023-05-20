@@ -43,6 +43,9 @@ const Footer = () => {
           </div>
         </div>
       </footer>
+      <div className="text-center bg-blue-400 py-2 text-xl">
+        &copy; All rights reserved
+      </div>
     </>
   );
 };
