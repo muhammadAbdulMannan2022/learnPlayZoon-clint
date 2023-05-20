@@ -1,15 +1,17 @@
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useContext } from "react";
 
 const Login = () => {
+  const location = useLocation();
+  const goTo = location?.state?.pathname || "/";
   const navigate = useNavigate();
   const { signUpWithGoogle, loginWithEmailAndPass } = useContext(AuthContext);
   const handleGoogleLogin = () => {
     signUpWithGoogle()
       .then(() => {
-        navigate("/");
+        navigate(goTo);
       })
       .catch((err) => console.log(err));
   };
@@ -19,12 +21,13 @@ const Login = () => {
     const { email, password } = form;
     loginWithEmailAndPass(email.value, password.value)
       .then(() => {
-        navigate("/");
+        navigate(goTo);
       })
       .catch((err) => console.log(err));
   };
   return (
     <div className="py-10 flex flex-col items-center justify-center">
+      {/* {console.log(location?.state?.pathname)} */}
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <h1 className="text-2xl text-center pt-5">Login</h1>
         <form onSubmit={handleLoginEmailPassword} className="card-body">

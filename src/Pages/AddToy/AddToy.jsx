@@ -34,7 +34,7 @@ const AddToy = () => {
       rating: rating,
     };
     if (price > 1 && rating > 1 && quantity >= 1) {
-      fetch("http://localhost:5000/addtoy", {
+      fetch("https://b7-a11.vercel.app/addtoy", {
         method: "POST",
         headers: {
           "content-type": "application/json",

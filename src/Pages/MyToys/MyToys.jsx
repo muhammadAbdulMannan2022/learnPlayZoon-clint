@@ -10,7 +10,9 @@ const MyToys = () => {
   const [ascending, setAscending] = useState("ascending");
   const closeRef = useRef();
   useEffect(() => {
-    fetch(`http://localhost:5000/mytoys?email=${user?.email}&sort=${ascending}`)
+    fetch(
+      `https://b7-a11.vercel.app/mytoys?email=${user?.email}&sort=${ascending}`
+    )
       .then((res) => res.json())
       .then((data) => setToys(data))
       .catch((err) => console.log(err));
@@ -25,7 +27,7 @@ const MyToys = () => {
       quantity: quantity.value,
       description: from.decription.value,
     };
-    fetch(`http://localhost:5000/toy/${updateId}`, {
+    fetch(`https://b7-a11.vercel.app/toy/${updateId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +57,7 @@ const MyToys = () => {
     }).then((willDelete) => {
       if (willDelete) {
         console.log(willDelete);
-        fetch(`http://localhost:5000/toy/${id}`, {
+        fetch(`https://b7-a11.vercel.app/toy/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -70,9 +72,6 @@ const MyToys = () => {
   };
   return (
     <>
-      <Helmet>
-        <title>LPZ || My toy</title>
-      </Helmet>
       <div className="w-full pt-5 px-5 flex justify-end">
         <div className="border w-36">
           <select
@@ -98,7 +97,7 @@ const MyToys = () => {
             </tr>
           </thead>
           {/* {console.log(toys)} */}
-          {/* {console.log(toys)} */}
+          {console.log(toys)}
           <tbody>
             {/* row 1 */}
             {toys.map((toy) => {

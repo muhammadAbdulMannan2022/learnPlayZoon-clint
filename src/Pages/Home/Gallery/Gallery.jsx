@@ -5,7 +5,7 @@ const Gallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [modalImage, setModalImage] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:5000/gallary`)
+    fetch(`https://b7-a11.vercel.app/gallary`)
       .then((res) => res.json())
       .then((data) => setImages(data));
   }, []);

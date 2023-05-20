@@ -14,7 +14,7 @@ const Navbar = () => {
     if (text === "") {
       setSearchResault([]);
     } else {
-      fetch(`http://localhost:5000/search/${text}`)
+      fetch(`https://b7-a11.vercel.app/search/${text}`)
         .then((res) => res.json())
         .then((data) => setSearchResault(data))
         .catch((err) => console.log(err));
@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar w-full bg-base-100 px-5 flex-col lg:flex-row space-y-2">
-        <div className="navbar-start flex w-full justify-center lg:w-1/2 lg:justify-normal">
+        <div className="navbar-start flex w-full md:ml-4 justify-center lg:w-1/2 lg:justify-normal">
           <Link
             to="/"
             className="normal-case text-3xl font-mono font-extrabold italic"
@@ -82,8 +82,10 @@ const Navbar = () => {
         </div>
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className={`navbar-center bg-white shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
-            isOpen ? "translate-x-0 ms-0" : "-translate-x-full -ms-5"
+          className={`navbar-center ml-1 bg-white shadow z-10 lg:z-0 m-0 p-2 lg:p-0 lg:shadow-none space-x-2 transition-all ${
+            isOpen
+              ? "translate-x-0 ms-0 md:ml-3"
+              : "-translate-x-full -ml-10 md:-ml-10"
           } lg:translate-x-0 menu menu-vertical z-20 absolute top-44 lg:relative lg:top-auto lg:menu-horizontal px-1`}
         >
           <li>

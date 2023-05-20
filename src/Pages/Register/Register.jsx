@@ -1,17 +1,19 @@
 import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Register = () => {
+  const location = useLocation();
+  const goTo = location?.state?.pathname || "/";
   const navigate = useNavigate();
   const { signUpWithGoogle, createUserWithEmailAndPass } =
     useContext(AuthContext);
   const handleGoogleLogin = () => {
     signUpWithGoogle()
       .then(() => {
-        navigate("/");
+        navigate(goTo);
       })
       .catch((err) => console.log(err));
   };
@@ -27,13 +29,14 @@ const Register = () => {
       })
         .then(() => {
           console.log("update success");
-          navigate("/");
+          navigate(goTo);
         })
         .catch((err) => console.log(err));
     });
   };
   return (
     <div className="bg-blue-100 py-10 flex items-center justify-center">
+      {/* {console.log(location)} */}
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <form onSubmit={handleRegister} className="card-body">
           <div className="form-control">

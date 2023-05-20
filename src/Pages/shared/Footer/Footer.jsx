@@ -3,7 +3,7 @@ import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-blue-200 text-base-content">
+      <footer className="footer p-10 shadow border-t shadow-green-400 text-base-content">
         <div>
           <span className="text-black text-3xl font-bold italic">
             LearnPlayZone
@@ -31,10 +31,10 @@ const Footer = () => {
         <div>
           <span className="footer-title">Social</span>
           <div className="grid grid-flow-col gap-4">
-            <a>
+            <a href="https://www.facebook.com/muhammad.abdulmannan.2004">
               <FaFacebook className="w-7 h-7 hover:text-blue-600 cursor-pointer" />
             </a>
-            <a>
+            <a href="https://github.com/muhammadAbdulMannan2022">
               <FaGithub className="w-7 h-7 hover:text-black cursor-pointer" />
             </a>
             <a>
@@ -43,7 +43,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="text-center bg-blue-400 py-2 text-xl">
+      <div className="text-center bg-green-400 py-2 text-xl">
         &copy; All rights reserved
       </div>
     </>
