@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Header from "../../shared/Header/Header";
 import Carouserl from "../Carouserl/Carouserl";
 import Contact from "../Contact/Contact";
@@ -7,6 +8,9 @@ import Products from "../Products/Products";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>LPZ</title>
+      </Helmet>
       <Header />
       <Gallery />
       <Products />

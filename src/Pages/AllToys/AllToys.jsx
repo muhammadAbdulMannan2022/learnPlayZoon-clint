@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
@@ -8,28 +9,33 @@ const AllToys = () => {
       .then((data) => setToys(data));
   }, []);
   return (
-    <div>
-      <div className="overflow-x-auto w-full my-10">
-        <table className="table w-full">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th className="hidden md:table-cell">Seller</th>
-              <th className="hidden md:table-cell">Available</th>
-              <th className="hidden md:table-cell">Sub Category</th>
-              <th>View Details</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* row 1 */}
-            {toys.map((toy) => {
-              return <TR toy={toy} key={toy?._id} />;
-            })}
-          </tbody>
-        </table>
+    <>
+      <Helmet>
+        <title>LPZ || All Toys</title>
+      </Helmet>
+      <div>
+        <div className="overflow-x-auto w-full my-10">
+          <table className="table w-full">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th className="hidden md:table-cell">Seller</th>
+                <th className="hidden md:table-cell">Available</th>
+                <th className="hidden md:table-cell">Sub Category</th>
+                <th>View Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* row 1 */}
+              {toys.map((toy) => {
+                return <TR toy={toy} key={toy?._id} />;
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 const TR = ({ toy }) => {

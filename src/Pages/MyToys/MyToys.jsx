@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet";
 
 const MyToys = () => {
   const [toys, setToys] = useState([]);
@@ -69,6 +70,9 @@ const MyToys = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>LPZ || My toy</title>
+      </Helmet>
       <div className="w-full pt-5 px-5 flex justify-end">
         <div className="border w-36">
           <select
