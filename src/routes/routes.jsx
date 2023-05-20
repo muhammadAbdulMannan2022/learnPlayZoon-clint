@@ -9,6 +9,7 @@ import AllToys from "../Pages/AllToys/AllToys";
 import Details from "../Pages/shared/Details/Details";
 import MyToys from "../Pages/MyToys/MyToys";
 import ErrorNotFound from "../Pages/Errors/ErrorNotFound";
+import Blog from "../Pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             <MyToys />
           </Private>
         ),
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/register",
