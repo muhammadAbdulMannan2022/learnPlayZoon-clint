@@ -6,13 +6,14 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
   const { user } = useContext(AuthContext);
   const [updateId, setUpdateId] = useState(null);
+  const [ascending, setAscending] = useState("ascending");
   const closeRef = useRef();
   useEffect(() => {
-    fetch(`http://localhost:5000/mytoys?email=${user?.email}`)
+    fetch(`http://localhost:5000/mytoys?email=${user?.email}&sort=${ascending}`)
       .then((res) => res.json())
       .then((data) => setToys(data))
       .catch((err) => console.log(err));
-  }, [user]);
+  }, [user, ascending]);
   const handleUpdate = (e) => {
     e.preventDefault();
     const from = e.target;
@@ -68,7 +69,19 @@ const MyToys = () => {
   };
   return (
     <>
-      <div className="overflow-x-auto w-full my-10">
+      <div className="w-full pt-5 px-5 flex justify-end">
+        <div className="border w-36">
+          <select
+            onChange={(e) => setAscending(e.target.value)}
+            className="select w-auto outline-none border-none"
+          >
+            {/* {console.log(ascending)} */}
+            <option defaultValue="ascending">ascending</option>
+            <option>descending</option>
+          </select>
+        </div>
+      </div>
+      <div className="overflow-x-auto w-full mb-10 mt-5">
         <table className="table w-full">
           {/* head */}
           <thead>
@@ -81,7 +94,7 @@ const MyToys = () => {
             </tr>
           </thead>
           {/* {console.log(toys)} */}
-          {console.log(toys)}
+          {/* {console.log(toys)} */}
           <tbody>
             {/* row 1 */}
             {toys.map((toy) => {
